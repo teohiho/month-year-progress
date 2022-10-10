@@ -52,20 +52,27 @@ export default {
         percentStr = percentStr.slice(0, 10);
       }
       
-      // show year progress
-      let self = this;
-      const update_date_interval_time = 50;
-      setInterval(function(){
-        self.progressType[0].progressPercent = self.progressYear() + "%";
-        self.progressType[0].typeName = now.getFullYear();
-      }, update_date_interval_time);
+      // ------ show year progress use setInterval
+      // let self = this;
+      // const update_date_interval_time = 50;
+      // setInterval(function(){
+      //   self.progressType[0].progressPercent = self.progressYear() + "%";
+      //   self.progressType[0].typeName = now.getFullYear();
+      // }, update_date_interval_time);
 
-      //this.progressType[0].progressPercent = percentStr + "%";
+      // ------ show year progress use requestAnimationFrame
+      this.progressType[0].progressPercent = percentStr + "%";
+      this.progressType[0].typeName = now.getFullYear();
+      window.requestAnimationFrame(this.progressYear);
 
       return percentStr;
     },
 
     progressMonth: function(){
+      const monthNames = ["January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+      ];
+
       let now = new Date();
       let start = new Date(now.getFullYear(), now.getMonth(), 1)  // Start of this month
       let end = new Date(now.getFullYear(), now.getMonth() + 1, 0);  // End of this month
@@ -77,19 +84,18 @@ export default {
         percentStr = percentStr.slice(0, 10);
       }
 
-      // show month progress
-      let self = this;
-      const update_date_interval_time = 50;
-      const monthNames = ["January", "February", "March", "April", "May", "June",
-        "July", "August", "September", "October", "November", "December"
-      ];
-     
-      //this.progressType[1].progressPercent = percentStr + "%";
-      //this.progressType[1].typeName = monthNames[now.getMonth()];
-      setInterval(function(){
-        self.progressType[1].progressPercent = percentStr + "%";
-        self.progressType[1].typeName = monthNames[now.getMonth()]
-      }, update_date_interval_time);
+      // show month progress use setInterval
+      // let self = this;
+      // const update_date_interval_time = 50;
+      // setInterval(function(){
+      //   self.progressType[1].progressPercent = percentStr + "%";
+      //   self.progressType[1].typeName = monthNames[now.getMonth()]
+      // }, update_date_interval_time);
+
+      // ------ show month progress use requestAnimationFrame
+      this.progressType[1].progressPercent = percentStr + "%";
+      this.progressType[1].typeName = monthNames[now.getMonth()];
+      window.requestAnimationFrame(this.progressMonth);
 
       return percentStr;
     }
