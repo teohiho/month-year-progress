@@ -116,7 +116,7 @@ export default {
   padding: 5px
 }
 .progress-year-number{
-  width: 165px;
+  width: 160px;
   float:right;
   padding-left: 20px;
 }
