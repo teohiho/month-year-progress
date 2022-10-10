@@ -121,7 +121,7 @@ export default {
   padding-left: 20px;
 }
 .footer {
-  margin-top: 50px;
+  margin-top: 5vh;
 }
 
 </style>
